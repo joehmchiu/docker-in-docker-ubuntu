@@ -35,7 +35,7 @@ CONTAINER ID        NAME                  CPU %               MEM USAGE / LIMIT 
 65b0e69250aa        brave_payne           2.84%               1.586MiB / 6.773GiB   0.02%               1.86kB / 0B         0B / 0B             8
 </pre>
 
-## Threading Queue
+## Threading
 The maximum queues seems to be handling only two threads at the same time in my machine. The other threads need to be queued until the previous process completed. It seems not like docker client which can handle more than 5 threads simultaneously for some reason.
 
 ## License
