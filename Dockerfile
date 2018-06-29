@@ -1,7 +1,7 @@
 FROM jenkins
 
 USER root
-# uncomment these lines if behind proxy server
+# uncomment these lines if behind a proxy server
 # ENV HTTP_PROXY 'http://<proxy>:8080'
 # ENV HTTPS_PROXY 'http://<proxy>:8080'
 # RUN export http_proxy=$HTTP_PROXY
