@@ -1,8 +1,0 @@
-jenkins_home: /var/jenkins_home
-jenkins_local: /home/joechiu/jenkins
-image: myjenkins
-password: foobar
-sock: /var/run/docker.sock
-docker: /usr/bin/docker
-sysconfig: /etc/sysconfig/docker
-uid: 1000

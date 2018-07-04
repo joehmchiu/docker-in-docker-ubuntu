@@ -1,4 +1,7 @@
 ---
+- name: include jenkins setting variables
+  include_vars: jenkins_vars
+
 - name: clean up docker
   ignore_errors: yes
   shell: |
