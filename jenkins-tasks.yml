@@ -1,6 +1,6 @@
 ---
 - name: include jenkins setting variables
-  include_vars: jenkins_vars
+  include_vars: settings
 
 - name: clean up docker
   ignore_errors: yes
