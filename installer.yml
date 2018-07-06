@@ -1,0 +1,51 @@
+---
+# automation detect os, check out the scripts and install jenkins docker
+- hosts: localhost
+  user: joechiu
+  become: yes
+  vars:
+    # check out directory
+    cod: /tmp/co
+    files: [ Dockerfile, settings, jenkins-tasks.yml ]
+  tasks:
+    - name: remove the temporary checkout directory if exists - it caused git clone duplicate directory issue
+      file:
+        state: absent
+        path: "{{cod}}"
+
+    # checkout jenkins docker for centos7
+    - name: clone docker jenkins source from git if os is centos
+      git:
+        repo: 'https://github.com/joehmchiu/docker-client-in-docker.git'
+        dest: '{{cod}}'
+      when: ansible_distribution == 'CentOS'
+
+    # checkout jenkins docker for ubuntu
+    - name: clone docker jenkins source from git if os is centos
+      git:
+        repo: 'https://github.com/joehmchiu/docker-in-docker-ubuntu.git'
+        dest: '{{cod}}'
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: example copying file with owner and permissions
+      copy:
+        src: "{{cod}}/{{item}}"
+        dest: "./{{item}}"
+      with_items:
+        - "{{files}}"
+
+    - name: include the docker jenkins installation tasks
+      include: jenkins-tasks.yml
+
+    - name: remove the temporary checkout directory
+      file:
+        state: absent
+        path: "{{cod}}"
+
+    - name: remove the temporary files
+      file:
+        state: absent
+        path: "./{{item}}"
+      with_items:
+        - "{{files}}"
+
