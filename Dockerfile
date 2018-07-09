@@ -14,7 +14,7 @@ USER root
 #     # insert to the jenkins starter to change the ownership to share the docker daemon
 
 # using one liner command to reduce the layer number of the images is not that ideal
-# since the dockerfile is changed to become not readable
+# since the dockerfile is changed to become unreadable
 # and the process running time increased around 12.5% in ubuntu running under virtualbox
 RUN apt-get update
 RUN curl -fsSL https://get.docker.com | sh
